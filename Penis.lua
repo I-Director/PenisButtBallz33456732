@@ -624,15 +624,23 @@ FullbrightButton_2.TextWrapped = true
 FullbrightButton_2.MouseButton1Click:connect(function()
 	if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
 		FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(3, 83, 26)
-		game:GetService("Lighting").Ambient = Color3.new(1, 1, 1)
-		game:GetService("Lighting").ColorShift_Bottom = Color3.new(1, 1, 1)
-		game:GetService("Lighting").ColorShift_Top = Color3.new(1, 1, 1)
+		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
+			while true do
+				game:GetService("Lighting").Ambient = Color3.new(1, 1, 1)
+				game:GetService("Lighting").ColorShift_Bottom = Color3.new(1, 1, 1)
+				game:GetService("Lighting").ColorShift_Top = Color3.new(1, 1, 1)
+			end
+		end
 
 	else if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
 		FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-		game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
-		game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
-		game:GetService("Lighting").ColorShift_Top = Color3.new(0, 0, 0)
+			if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
+				while true do
+					game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
+					game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
+					game:GetService("Lighting").ColorShift_Top = Color3.new(0, 0, 0)
+				end
+			end
 	end
 	end
 end)
@@ -702,7 +710,7 @@ AnimalESP.Text = "Animal ESP"
 AnimalESP.TextColor3 = Color3.fromRGB(0, 0, 0)
 AnimalESP.TextSize = 26.000
 AnimalESP.TextWrapped = true
-AnimalESP.MouseButton1Click:Connect(function()
+--[[ AnimalESP.MouseButton1Click:Connect(function()
 	if AnimalESP.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
 		AnimalESP.BackgroundColor3 = Color3.fromRGB(3, 83, 26)
 		local esp_settings = { ---- table for esp settings 
@@ -746,7 +754,7 @@ AnimalESP.MouseButton1Click:Connect(function()
 		end
 	end
 end)
-
+]]
 ServerHop_2.Name = "ServerHop"
 ServerHop_2.Parent = GameMod
 ServerHop_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
@@ -927,7 +935,7 @@ RankOutput.Text = "Loading ."
 wait(0.5)
 DaddyFrame.Visible = false
 
-if player.Name == "Dinoblox" then
+if player.Name == "Dinoblox" or "Creten" then
 	RankOutput.Text = "Loading .."
 	wait(1)
 	RankOutput.Text = "Loading ..."
@@ -937,7 +945,7 @@ if player.Name == "Dinoblox" then
 	DaddyFrame.Visible = true
 end
 
-if player.Name == "WildX_Test" or "Yosaun" then
+if player.Name == "WildX_Test" then
 	RankOutput.Text = "Loading .."
 	wait(1)
 	RankOutput.Text = "Loading ..."
@@ -951,7 +959,7 @@ if player.Name == "WildX_Test" or "Yosaun" then
 	DaddyFrame.Visible = true
 end
 
-if player.Name == "N/A" then
+if player.Name == "Yosaun" then
 	RankOutput.Text = "Loading .."
 	wait(1)
 	RankOutput.Text = "Loading ..."
