@@ -626,6 +626,7 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 		FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(3, 83, 26)
 		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
 			while true do
+			wait(1)
 				if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(1, 1, 1) then
 					game:GetService("Lighting").Ambient = Color3.new(1, 1, 1)
 					game:GetService("Lighting").ColorShift_Bottom = Color3.new(1, 1, 1)
@@ -638,6 +639,7 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 			FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
 		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
 			while true do
+			wait(1)
 				if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
 				game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
 				game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
