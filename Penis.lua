@@ -1,4 +1,4 @@
-=--[[
+--[[
 
 $$\      $$\ $$$$$$\ $$\       $$$$$$$\        $$\   $$\ 
 $$ | $\  $$ |\_$$  _|$$ |      $$  __$$\       $$ |  $$ |
@@ -632,12 +632,12 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 
 	else if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
 			 FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-			if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
+			 if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
 				game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
 				game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
 				game:GetService("Lighting").ColorShift_Top = Color3.new(0, 0, 0)
 			 end
-	end
+		end
 	end
 end)
 
