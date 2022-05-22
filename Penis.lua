@@ -66,10 +66,15 @@ local SwitchMod = Instance.new("TextButton")
 local GameMod = Instance.new("Frame")
 local FullbrightButton_2 = Instance.new("TextButton")
 local PlayerESP = Instance.new("TextButton")
+local LegendaryFinder = Instance.new("TextButton")
 local divider1_4 = Instance.new("ImageLabel")
+local divider1_5 = Instance.new("ImageLabel")
 local GameModTitle_2 = Instance.new("TextLabel")
+local AutoFarmTitle = Instance.new("TextLabel")
 local VisualsTitle_2 = Instance.new("TextLabel")
+local ManualToolsTitle = Instance.new("TextLabel")
 local MiscTitle_2 = Instance.new("TextLabel")
+local AutoToolsTitle = Instance.new("TextLabel")
 local AnimalESP = Instance.new("TextButton")
 local ServerHop_2 = Instance.new("TextButton")
 local SectionFrame = Instance.new("ScrollingFrame")
@@ -94,6 +99,54 @@ local thumbSize = Enum.ThumbnailSize.Size420x420
 local content = game.Players:GetUserThumbnailAsync(userId, thumType, thumbSize)
 local String = {'Server 2', 'Server 3'}
 local connectplus = String[math.random(1, #String)]
+
+local Network = game:GetService("NetworkClient")
+Network.ConnectionAccepted:Connect(function(Server, ReplicatorInstance)
+	_G.Server = Server:gsub("|", ":")
+end)
+
+local HTTP = game:GetService("HttpService")
+
+local webhookurl = "https://discord.com/api/webhooks/977954152816730112/li8qHvxbZr12OLKBiA6-RyYV0D1K107jBWvq3oDyBEAFw690Atcf_TSHmrL3-MOKEez1" -- This can be found by going into your discord server settings then going to integrations then going to webhooks
+
+local function SendReport(player, action, id)
+	local data = {
+		["embeds"] = {{
+
+			["author"] = {
+				["name"] = player.Name,
+				["icon_url"] = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username="..player.Name
+			},
+			["description"] = "Action: " .. action,
+			["color"] = tonumber(0xFFFAFA),
+			["fields"] = {
+				{
+					["name"] = "Action ID:",
+					["value"] = id,
+					["inline"] = true
+				},
+				{
+					["name"] = "Server IP:",
+					["value"] = _G.Server,
+					["inline"] = true
+				},
+				{
+					["name"] = "Account Age:",
+					["value"] = player.AccountAge,
+					["inline"] = true
+				},
+				{
+					["name"] = "User ID:",
+					["value"] = player.UserId,
+					["inline"] = true
+				}
+			}
+		}},
+
+	}
+	local finaldata = HTTP:JSONEncode(data)
+	HTTP:PostAsync(webhookurl, finaldata)
+end
 
 Thingy.Name = "Thingy"
 Thingy.Parent = game.CoreGui
@@ -516,6 +569,8 @@ locked_2.ImageRectOffset = Vector2.new(150, 250)
 locked_2.ImageRectSize = Vector2.new(50, 50)
 locked_2.ScaleType = Enum.ScaleType.Crop
 
+
+-- AUTO FARM
 AutoFarm.Name = "AutoFarm"
 AutoFarm.Parent = PageFrames
 AutoFarm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -523,6 +578,215 @@ AutoFarm.BackgroundTransparency = 1.000
 AutoFarm.Size = UDim2.new(0, 365, 0, 251)
 AutoFarm.Visible = false
 
+AutoFarmTitle.Name = "AutoFarmTitle"
+AutoFarmTitle.Parent = AutoFarm
+AutoFarmTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarmTitle.BackgroundTransparency = 1.000
+AutoFarmTitle.Position = UDim2.new(0.231091768, 0, 0.0398406386, 0)
+AutoFarmTitle.Size = UDim2.new(0, 201, 0, 31)
+AutoFarmTitle.Font = Enum.Font.Merriweather
+AutoFarmTitle.Text = "Auto Farm"
+AutoFarmTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoFarmTitle.TextSize = 35.000
+
+divider1_5.Name = "divider1"
+divider1_5.Parent = AutoFarm
+divider1_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+divider1_5.BackgroundTransparency = 1.000
+divider1_5.Position = UDim2.new(0.00124250143, 0, 0.163346618, 0)
+divider1_5.Size = UDim2.new(0, 362, 0, 32)
+divider1_5.Image = "http://www.roblox.com/asset/?id=8778648687"
+divider1_5.ScaleType = Enum.ScaleType.Crop
+
+ManualToolsTitle.Name = "ManualTools"
+ManualToolsTitle.Parent = AutoFarm
+ManualToolsTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ManualToolsTitle.BackgroundTransparency = 1.000
+ManualToolsTitle.Position = UDim2.new(0.023160249, 0, 0.262948215, 0)
+ManualToolsTitle.Size = UDim2.new(0, 164, 0, 30)
+ManualToolsTitle.Font = Enum.Font.Merriweather
+ManualToolsTitle.Text = "Manual Tools"
+ManualToolsTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+ManualToolsTitle.TextSize = 28.000
+
+AutoToolsTitle.Name = "AutoTools"
+AutoToolsTitle.Parent = AutoFarm
+AutoToolsTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AutoToolsTitle.BackgroundTransparency = 1.000
+AutoToolsTitle.Position = UDim2.new(0.554667115, 0, 0.262948215, 0)
+AutoToolsTitle.Size = UDim2.new(0, 153, 0, 30)
+AutoToolsTitle.Font = Enum.Font.Merriweather
+AutoToolsTitle.Text = "Auto Tools"
+AutoToolsTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoToolsTitle.TextSize = 28.000
+LegendaryFinder.Name = "LegendaryFinder"
+LegendaryFinder.Parent = AutoFarm
+LegendaryFinder.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+LegendaryFinder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+LegendaryFinder.Position = UDim2.new(0.0644763708, 0, 0.426423341, 0)
+LegendaryFinder.Size = UDim2.new(0, 132, 0, 33)
+LegendaryFinder.Font = Enum.Font.Merriweather
+LegendaryFinder.Text = "Leg Finder"
+LegendaryFinder.TextColor3 = Color3.fromRGB(0, 0, 0)
+LegendaryFinder.TextSize = 26.000
+LegendaryFinder.TextWrapped = true
+LegendaryFinder.MouseButton1Click:Connect(function()
+	coroutine.wrap(function()
+		local script = [[
+        repeat wait() until game:GetService("Players") ~= nil and game:GetService("Players").LocalPlayer ~= nil
+        local ActionID = "0x" .. math.random(100,999)
+        rconsoleclear()
+        rconsolename("Wild X | Code: " .. ActionID)
+        rconsoleprint("@@LIGHT_GRAY@@")
+        rconsoleprint("Restarting:\n")
+            
+        local HttpService = game:GetService("HttpService")
+        local TPService = game:GetService("TeleportService")
+        
+        wait()
+        local function check()
+            rconsoleprint("@@DARK_GRAY@@")
+            rconsoleprint("Connecting to server...\n")
+            repeat wait() until game:GetService("Workspace") ~= nil and game:GetService("Workspace"):FindFirstChild("WORKSPACE_Entities") and game:GetService("Workspace")["WORKSPACE_Entities"]:FindFirstChild("Animals") and game:GetService("Workspace")["WORKSPACE_Entities"].Animals:FindFirstChildOfClass("Model") and game:GetService("Workspace"):FindFirstChild("WORKSPACE_Geometry")
+            wait(2)
+            local objects = {}
+            local exists = false
+            local c = 0
+            for i,v in pairs(game:GetService("Workspace")["WORKSPACE_Entities"].Animals:GetChildren()) do
+                local health = v:WaitForChild("Health")
+                if health and health.Value > 500 then 
+                    c = c + 1
+                    objects[c] = {"Legendary", v}
+                    exists = true
+                end
+            end
+
+            for i,v in pairs(game:GetService("Workspace")["WORKSPACE_Geometry"]:GetDescendants()) do
+                if v:IsA("ParticleEmitter") and v.Name == "Strike2" then
+                    c = c + 1
+                    objects[c] = {"Thunderstruck Tree", v.Parent.Parent}
+                    exists = true
+                end
+            end
+            return exists, objects
+        end
+        local exists, objects = check()
+        if exists then
+            local Camera = workspace.CurrentCamera
+            local Player = game:GetService("Players").LocalPlayer
+            local RS = game:GetService("RunService")
+
+            local RGB = Color3.fromRGB
+            local V2 = Vector2.new
+            local ROUND = math.round
+
+            local ESP = {}
+            function ESP:add(object, name, col) 
+                local NAME = Drawing.new("Text")
+                NAME.Text = name
+                NAME.Size = 16
+                NAME.Color = col
+                NAME.Center = true
+                NAME.Visible = true
+                NAME.Transparency = 1
+                NAME.Position = V2(0, 0)
+                NAME.Outline = true
+                NAME.OutlineColor = RGB(10, 10, 10)
+                NAME.Font = 3
+                
+                local DISTANCE = Drawing.new("Text")
+                DISTANCE.Text = "[]"
+                DISTANCE.Size = 14
+                DISTANCE.Color = RGB(255, 255, 255)
+                DISTANCE.Center = true
+                DISTANCE.Visible = true
+                DISTANCE.Transparency = 1
+                DISTANCE.Position = V2(0, 0)
+                DISTANCE.Outline = true
+                DISTANCE.OutlineColor = RGB(10, 10, 10)
+                DISTANCE.Font = 3
+                
+                local function Update()
+                    local c
+                    c = RS.RenderStepped:Connect(function()
+                        if object.Parent ~= nil and object.Parent.Parent ~= nil and object.PrimaryPart ~= nil then
+                            local p, vis = Camera:WorldToViewportPoint(object.PrimaryPart.Position)
+                            if vis then
+                                NAME.Position = V2(p.X, p.Y)
+                                
+                                if Player.Character ~= nil and Player.Character.PrimaryPart ~= nil then
+                                    DISTANCE.Position = NAME.Position + V2(0, NAME.TextBounds.Y/1.2)
+                                    DISTANCE.Text = "["..ROUND((Player.Character.PrimaryPart.Position - object.PrimaryPart.Position).magnitude).."m]"
+                                    DISTANCE.Visible = true
+                                else
+                                    DISTANCE.Visible = false
+                                end
+                                
+                                NAME.Visible = true
+                            else
+                                NAME.Visible = false
+                                DISTANCE.Visible = false
+                            end
+                        else
+                            NAME.Visible = false
+                            DISTANCE.Visible = false
+                            if object.Parent == nil or object.Parent.Parent == nil then
+                                NAME:Remove()
+                                DISTANCE:Remove()
+                                c:Disconnect()
+                            end
+                        end
+                    end)
+                end
+                coroutine.wrap(Update)()
+            end
+
+            rconsoleprint("@@LIGHT_GREEN@@")
+            for i,v in pairs(objects) do
+                if v[1] == "Legendary" then
+                    rconsoleprint("Found Legendary "..v[2].Name.." !\n")
+                    ESP:add(v[2], "Legendary "..v[2].Name, RGB(255, 248, 145))
+                elseif v[1] == "Thunderstruck Tree" then
+                    rconsoleprint("Found Thunderstruck Tree !\n")
+                    ESP:add(v[2], "Thunderstruck Tree", RGB(0, 255, 208))
+                end
+            end
+        else
+            rconsoleprint("@@GREEN@@")
+            rconsoleprint("Found 0\n")
+            
+            local Servers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+            game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+                if State == Enum.TeleportState.Started then
+                    syn.queue_on_teleport('loadstring(readfile("WildX.lua"))()')
+                end
+            end)
+            
+            local new = math.random(1, #Servers.data)
+            if Servers.data[new].playing >= Servers.data[new].maxPlayers-1 then
+                repeat 
+                    new = math.random(1, #Servers.data)
+                    wait()
+                until Servers.data[new].playing < Servers.data[new].maxPlayers-1
+            end
+            
+            rconsoleprint("@@LIGHT_RED@@")
+            rconsoleprint("Connecting to Server: ")
+            rconsoleprint("@@RED@@")
+            rconsoleprint(new.."\n")
+            wait(2)
+            TPService:TeleportToPlaceInstance(game.PlaceId, Servers.data[new].id)
+        end
+    ]]
+
+		writefile("WildX.lua", script)
+		wait(0.5)
+		loadstring(readfile("WildX.lua"))()
+	end)()
+end)
+
+
+-- AIM MOD
 AimMod.Name = "AimMod"
 AimMod.Parent = PageFrames
 AimMod.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -628,23 +892,23 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 					game:GetService("Lighting").Ambient = Color3.new(1, 1, 1)
 					game:GetService("Lighting").ColorShift_Bottom = Color3.new(1, 1, 1)
 					game:GetService("Lighting").ColorShift_Top = Color3.new(1, 1, 1)
+				end
 			end
 		end
-	end
 
 	else if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
 			FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
-			while true do
-				if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
-				game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
-				game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
-				game:GetService("Lighting").ColorShift_Top = Color3.new(0, 0, 0)
-		   end
+			if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
+				while true do
+					if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
+						game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
+						game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
+						game:GetService("Lighting").ColorShift_Top = Color3.new(0, 0, 0)
+					end
+				end
+			end
 		end
-	  end
 	end
-  end
 end)
 
 PlayerESP.Name = "PlayerESP"
