@@ -95,11 +95,6 @@ local content = game.Players:GetUserThumbnailAsync(userId, thumType, thumbSize)
 local String = {'Server 2', 'Server 3'}
 local connectplus = String[math.random(1, #String)]
 
---Functions:
-
-
-
---Properties:
 Thingy.Name = "Thingy"
 Thingy.Parent = game.CoreGui
 Thingy.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -910,6 +905,7 @@ Close.ImageRectOffset = Vector2.new(284, 4)
 Close.ImageRectSize = Vector2.new(24, 24)
 Close.MouseButton1Click:connect(function()
 	DaddyFrame.Visible = false
+	ImageButton.Visible = false
 end)
 
 WildXHeader.Name = "WildXHeader"
@@ -943,8 +939,8 @@ wait(0.5)
 DaddyFrame.Visible = false
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = "Powered By TrullzSec",
-	Text = "TrullzSec API v0.07 Has Loaded!",
+	Title = "TrullzSec API",
+	Text = "Powered By TrullzSec.  v0.07 Has Loaded!",
 	Icon = "rbxassetid://9697346952"
 })
 
@@ -1053,7 +1049,7 @@ if 	RankOutput.Text == "😔 Blacklisted 😔" then
 	ConnectionOutput.Text = "Blacklisted"
 end
 
-ImageButton.Parent = ScreenGui
+ImageButton.Parent = Thingy
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.BackgroundTransparency = 1.000
 ImageButton.BorderSizePixel = 0
