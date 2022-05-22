@@ -24,6 +24,9 @@ local Username = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Rank = Instance.new("TextLabel")
 local Connection = Instance.new("TextLabel")
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local TextLabel = Instance.new("TextLabel")
 local RankOutput = Instance.new("TextLabel")
 local ConnectionOutput = Instance.new("TextLabel")
 local Credits = Instance.new("Frame")
@@ -626,7 +629,6 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 		FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(3, 83, 26)
 		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(3, 83, 26) then
 			while true do
-			wait(1)
 				if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(1, 1, 1) then
 					game:GetService("Lighting").Ambient = Color3.new(1, 1, 1)
 					game:GetService("Lighting").ColorShift_Bottom = Color3.new(1, 1, 1)
@@ -639,7 +641,6 @@ FullbrightButton_2.MouseButton1Click:connect(function()
 			FullbrightButton_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
 		if FullbrightButton_2.BackgroundColor3 == Color3.fromRGB(22, 22, 22) then
 			while true do
-			wait(1)
 				if game:GetService("Lighting").Ambient and game:GetService("Lighting").ColorShift_Bottom and game:GetService("Lighting").ColorShift_Top ~= Color3.new(0, 0, 0) then
 				game:GetService("Lighting").Ambient = Color3.new(0, 0, 0)
 				game:GetService("Lighting").ColorShift_Bottom = Color3.new(0, 0, 0)
@@ -941,6 +942,12 @@ RankOutput.Text = "Loading ."
 wait(0.5)
 DaddyFrame.Visible = false
 
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Powered By TrullzSec",
+	Text = "TrullzSec API v0.07 Has Loaded!",
+	Icon = "rbxassetid://9697346952"
+})
+
 if player.Name == "Dinoblox" or "Creten" then
 	RankOutput.Text = "Loading .."
 	wait(1)
@@ -1045,6 +1052,28 @@ if 	RankOutput.Text == "😔 Blacklisted 😔" then
 	ConnectionOutput.TextColor3 = Color3.fromRGB(255, 0, 0)
 	ConnectionOutput.Text = "Blacklisted"
 end
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BackgroundTransparency = 1.000
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.947911382, 0, 0.00833333377, 0)
+ImageButton.Size = UDim2.new(0, 99, 0, 59)
+ImageButton.ZIndex = 100
+ImageButton.Image = "http://www.roblox.com/asset/?id=9697346943"
+ImageButton.ScaleType = Enum.ScaleType.Fit
+
+TextLabel.Parent = ImageButton
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(-0.0144441565, 0, 1, 0)
+TextLabel.Size = UDim2.new(0, 99, 0, 16)
+TextLabel.ZIndex = 100
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "TrullzSec API"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 11.000
 
 Profile_2.MouseButton1Click:connect(function()
 	Profile.Visible = true
